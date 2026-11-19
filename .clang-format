@@ -1,0 +1,52 @@
+---
+BasedOnStyle: LLVM
+
+# 基础排版:4 空格缩进,行宽 120
+Standard:        c++17
+IndentWidth:     4
+TabWidth:        4
+AccessModifierOffset: -4
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# 对齐
+AlignArrayOfStructures: Left
+AlignEscapedNewlines: Left
+
+# 单行折叠
+AllowShortEnumsOnASingleLine: false
+
+# 空行与注释
+CommentPragmas:  '^ IWYU pragma:|^lint'
+SeparateDefinitionBlocks: Always
+InsertBraces:    true
+
+# 限定符顺序:const 放左侧
+QualifierAlignment: Custom
+QualifierOrder:
+  - inline
+  - static
+  - constexpr
+  - const
+  - type
+
+# include 分组:主头文件用引号,分组重排
+IncludeBlocks:   Regroup
+IncludeIsMainRegex: '$'
+IncludeCategories:
+  - Regex:           '<(Aten|c10|torch|catch2|boost|fmt|gtest|gmock|google)\/'
+    Priority:        3
+    SortPriority:    0
+  - Regex:           '<([A-Za-z0-9\Q/-_\E])+\.h>'
+    Priority:        1
+    SortPriority:    0
+  - Regex:           '<([A-Za-z0-9\Q/-_\E])+>'
+    Priority:        2
+    SortPriority:    0
+  - Regex:           '<([A-Za-z0-9.\Q/-_\E])+>'
+    Priority:        4
+    SortPriority:    0
+  - Regex:           '"([A-Za-z0-9.\Q/-_\E])+"'
+    Priority:        5
+    SortPriority:    0
+...

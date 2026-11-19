@@ -1,0 +1,24 @@
+agnostics:
+UnusedIncludes: Strict
+ClangTidy:
+    Add:
+        - modernize-loop-convert
+        - bugprone-branch-clone
+        - bugprone-unchecked-optional-access
+        - bugprone-easily-swappable-parameters
+        - bugprone-branch-clone
+        - performance-inefficient-string-concatenation
+        - readability-implicit-bool-conversion
+        - readability-simplify-boolean-expr
+        - readability-suspicious-call-argument
+
+Index:
+    Background: Build
+CompileFlags:
+    Add: [-Wall, -Wextra, -Werror, -Wpedantic, -Wno-unknown-warning-option]
+    Remove: []
+    Compiler: clang++
+InlayHints:
+    Enabled: Yes
+    ParameterNames: Yes
+    DeducedTypes: Yes
